@@ -12,14 +12,13 @@ defmodule ElixirStats.CentralTendency.Mean do
 
   def population_mean(_), do: Errors.invalid_data_type()
 
-  @spec calculate_population_mean({false, any()} | {true, any()}) ::
-          float() | {:error, <<_::104>>}
-  def calculate_population_mean({false, _}), do: Errors.invalid_data_type()
+  def sample_mean(nums), do: population_mean(nums)
 
-  def calculate_population_mean({true, nums}) do
+  defp calculate_population_mean({false, _}), do: Errors.invalid_data_type()
+
+  defp calculate_population_mean({true, nums}) do
     Enum.sum(nums) |> mean(Enum.count(nums))
   end
 
-  @spec mean(number(), number()) :: float()
-  def mean(sigma, count), do: sigma/count
+  defp mean(sigma, count), do: sigma/count
 end

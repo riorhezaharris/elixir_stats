@@ -1,18 +1,8 @@
 defmodule ElixirStats do
-  @moduledoc """
-  Documentation for `ElixirStats`.
-  """
+  alias ElixirStats.CentralTendency.Mean
 
-  @doc """
-  Hello world.
+  # def population_mean(nums), do: Mean.population_mean(nums)
+  defdelegate population_mean(nums), to: Mean
 
-  ## Examples
-
-      iex> ElixirStats.hello()
-      :world
-
-  """
-  def hello do
-    :world
-  end
+  defdelegate sample_mean(nums), to: Mean
 end
